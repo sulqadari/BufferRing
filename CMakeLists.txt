@@ -13,10 +13,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2  \
 	-Wcast-align -Wformat-security"
 )
 
+option(ADD_SANITIZE_CHECK "Add threads sanity check" OFF)
+
 # MinGW doesn't support TSAN on Windows. Although LLVM provides
 # a limited support, for the sake of cross-platform portability
-# this option is applied only on Unix systems.
-if (UNIX)
+# this option is should be applied on Unix-alike systems only.
+if (UNIX AND ADD_SANITIZE_CHECK)
+	message("Adding threads sanitize checking")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=thread")
 endif()
 find_package(Threads REQUIRED)
