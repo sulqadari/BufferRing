@@ -38,21 +38,21 @@ public:
         return true;
     }
 
-    bool pop(T &value)
-    {
-        size_t curr_head = head.load();
-        size_t curr_tail = tail.load();
+	bool pop(T &value)
+	{
+		size_t curr_head = head.load();
+		size_t curr_tail = tail.load();
 
-        if (curr_head == curr_tail)
-        {
-            return false;
-        }
+		if (curr_tail == curr_head)
+		{
+			return false;
+		}
 
-        value = std::move(storage[curr_head]);
-        head.store(get_next(curr_head));
+		value = std::move(storage[curr_head]);
+		head.store(get_next(curr_head));
 
-        return true;
-    }
+		return true;
+	}
 
 private:
     size_t get_next(size_t slot) const
@@ -67,6 +67,7 @@ private:
     std::atomic<size_t> head;
 };
 
+static 
 void test()
 {
     int count = 10000000;
