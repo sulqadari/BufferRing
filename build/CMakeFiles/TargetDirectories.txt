@@ -1,0 +1,3 @@
+/home/telman_rabocij/develop/ring_buffer/build/CMakeFiles/BufferRing.dir
+/home/telman_rabocij/develop/ring_buffer/build/CMakeFiles/edit_cache.dir
+/home/telman_rabocij/develop/ring_buffer/build/CMakeFiles/rebuild_cache.dir
