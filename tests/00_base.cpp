@@ -34,7 +34,6 @@ public:
 
         storage[curr_tail] = std::move(value);
         tail.store(get_next(curr_tail));
-		std::cout << "push::tail: " << tail.load() << std::endl;
 
         return true;
     }
@@ -51,7 +50,6 @@ public:
 
 		value = std::move(storage[curr_head]);
 		head.store(get_next(curr_head));
-		std::cout << "pop::head: " << head.load() << std::endl;
 		
 		return true;
 	}
