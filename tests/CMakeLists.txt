@@ -1,6 +1,7 @@
 set(sources
 	00_base
 	01_sans_atomic
+	02_lock_free_queue
 )
 
 foreach(test IN LISTS sources)

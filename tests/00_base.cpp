@@ -17,15 +17,15 @@ class ring_buffer
 public:
     ring_buffer(size_t capacity):
         storage(capacity + 1),
-		storageCapacity(capacity),
+		storageCapacity(capacity + 1),
         tail(0),
         head(0)
     {}
 
     bool push(T value)
     {
-        size_t curr_tail = tail.load();
         size_t curr_head = head.load();
+        size_t curr_tail = tail.load();
 
         if (get_next(curr_tail) == curr_head)
         {
@@ -67,13 +67,11 @@ private:
     std::atomic<size_t> head;
 };
 
-static 
-void test()
+static void
+test()
 {
     int count = 10000000;
-
     ring_buffer<int> buffer(1024);
-
     auto start = std::chrono::steady_clock::now();
 
     std::thread producer([&]() {
@@ -120,8 +118,4 @@ int main()
     }
 
     return 0;
-};
-
-
-//g++ -std=c++17 -O2 -pthread main.cpp
-//g++ -std=c++17 -O2 -pthread -fsanitize=thread main.cpp
+}

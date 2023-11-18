@@ -8,18 +8,19 @@ class ring_buffer
 {
 public:
 	ring_buffer(size_t capacity):
-		size(capacity),
+		size(capacity + 1),
 		storage(capacity + 1),
 		tail(0),
 		head(0)
 	{}
 
-	bool push(T value)
+	inline bool push(T value)
 	{
 		size_t curr_tail = tail;
 		size_t curr_head = head;
 
-		if (get_next(curr_tail) == curr_head) {
+		if (get_next(curr_tail) == curr_head)
+		{
 			return (false);
 		}
 
@@ -29,12 +30,13 @@ public:
 		return (true);
 	}
 
-	bool pop(T& value)
+	inline bool pop(T& value)
 	{
 		size_t curr_tail = tail;
 		size_t curr_head = head;
 
-		if (curr_tail == curr_head) {
+		if (curr_tail == curr_head)
+		{
 			return (false);
 		}
 
