@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2  \
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 \
 	-Wall -Wextra -Wno-unused-parameter -Wmissing-declarations \
 	-Wno-missing-field-initializers -Wredundant-decls -Wformat \
 	-Wcast-align -Wformat-security"
